@@ -3,25 +3,15 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/PoojithaJuvva/job-tracker.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build("job-tracker")
-                }
+                bat 'docker build -t job-tracker .'
             }
         }
 
         stage('Run Container') {
             steps {
-                script {
-                    docker.run("-d -p 5000:5000 job-tracker")
-                }
+                bat 'docker run -d -p 5000:5000 job-tracker'
             }
         }
 
