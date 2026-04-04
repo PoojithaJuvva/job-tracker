@@ -2,9 +2,9 @@ FROM python:3.10
 
 WORKDIR /app
 
-COPY backend/ backend/
+COPY . .
 
-RUN pip install -r backend/requirements.txt
+RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
