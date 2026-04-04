@@ -3,6 +3,18 @@ pipeline {
 
     stages {
 
+        stage('Install Dependencies') {
+            steps {
+                bat 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                bat 'python test_app.py'
+            }
+        }
+
         stage('Stop Old Container') {
             steps {
                 bat 'docker stop job-tracker || exit 0'
